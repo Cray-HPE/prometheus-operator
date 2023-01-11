@@ -1,0 +1,34 @@
+apiVersion: v2
+appVersion: 0.38.1
+description: Provides easy monitoring definitions for Kubernetes services, and deployment
+  and management of Prometheus instances.
+home: https://github.com/coreos/prometheus-operator
+icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+keywords:
+- operator
+- prometheus
+maintainers:
+- name: vsliouniaev
+- name: bismarck
+- email: gianrubio@gmail.com
+  name: gianrubio
+name: prometheus-operator
+sources:
+- https://github.com/coreos/kube-prometheus
+- https://github.com/coreos/prometheus-operator
+- https://coreos.com/operators/prometheus
+version: 9.3.1
+dependencies:
+  - name: kube-state-metrics
+    version: "4.24.*"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: kubeStateMetrics.enabled
+  - name: prometheus-node-exporter
+    version: "4.8.*"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: nodeExporter.enabled
+  - name: grafana
+    version: "6.48.*"
+    repository: https://grafana.github.io/helm-charts
+    condition: grafana.enabled
+
